@@ -9,28 +9,39 @@ const priorityMapping = {
 const priorityOrder = ['No priority', 'Urgent', 'High', 'Medium', 'Low'];
 
 export const groupTickets = (tickets, groupBy, users) => {
-    let groupedTickets = {};
-
-    tickets.forEach((ticket) => {
-        let groupKey;
-
-        if (groupBy === 'status') {
-            groupKey = ticket.status;
-        } else if (groupBy === 'priority') {
-            groupKey = priorityMapping[ticket.priority];
-        } else if (groupBy === 'user') {
-            const user = users.find((user) => user.id === ticket.userId);
-            groupKey = user ? user.name : 'Unknown';
+    const groupedTickets = tickets.reduce((acc, ticket) => {
+        const groupKey = getGroupKey(ticket, groupBy, users);
+        if (!acc[groupKey]) {
+            acc[groupKey] = [];
         }
+        acc[groupKey].push(ticket);
+        return acc;
+    }, {});
 
-        if (!groupedTickets[groupKey]) {
-            groupedTickets[groupKey] = [];
-        }
-
-        groupedTickets[groupKey].push(ticket);
-    });
-
+    if (groupBy === 'status') {
+        const allStatusCategories = ['Todo', 'In progress', 'Backlog', 'Done', 'Cancelled'];
+        allStatusCategories.forEach((status) => {
+            if (!groupedTickets[status]) {
+                groupedTickets[status] = [];
+            }
+        });
+    }
     return groupedTickets;
+};
+
+const getGroupKey = (ticket, groupBy, users) => {
+    switch (groupBy) {
+        case 'status':
+            return ticket.status;
+        case 'priority':
+            return priorityMapping[ticket.priority];
+        case 'user': {
+            const user = users.find((user) => user.id === ticket.userId);
+            return user ? user.name : 'Unknown';
+        }
+        default:
+            return '';
+    }
 };
 
 export const sortTickets = (groupedTickets, sortBy) => {
@@ -54,6 +65,5 @@ export const sortTickets = (groupedTickets, sortBy) => {
         });
         return sortedGroups;
     }
-
     return groupedTickets;
 };
