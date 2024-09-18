@@ -1,0 +1,15 @@
+.kanbanBoard {
+    display: flex;
+    justify-content: space-around;
+    padding: 20px
+}
+
+.kanbanColumn {
+    padding: 10px;
+    margin: 0 8px;
+}
+
+.heading {
+    text-align: center;
+    font-size: 18px;
+}
