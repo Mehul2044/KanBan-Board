@@ -12,6 +12,8 @@ function UserAvatar({user}) {
                 justifyContent: 'center',
                 alignItems: 'center',
                 position: 'relative',
+                color: "white",
+                fontWeight: "bold"
             }}>
             {user.name.slice(0, 2).toUpperCase()}
             <span

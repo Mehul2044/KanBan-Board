@@ -9,6 +9,7 @@
     justify-content: space-between;
     width: 290px;
     position: relative;
+    transition: all 0.3s ease;
 }
 
 .ticketHeader {
@@ -24,17 +25,12 @@
 }
 
 .ticketTitle {
-    font-size: 18px;
-    font-weight: 600;
-    color: #333;
-    margin: 10px 0;
-}
-
-.ticketTitle {
     display: flex;
     align-items: center;
     font-size: 1.1rem;
     margin: 10px 0;
+    font-weight: 600;
+    color: #333;
 }
 
 .statusIcon {
@@ -57,4 +53,51 @@
     border-radius: 15px;
     font-size: 12px;
     color: #666;
+}
+
+@media (max-width: 768px) {
+    .ticketCard {
+        width: 100%;
+        padding: 15px;
+    }
+
+    .ticketTitle {
+        font-size: 1rem;
+    }
+
+    .ticketId {
+        font-size: 12px;
+    }
+
+    .priorityIcon {
+        font-size: 18px;
+    }
+
+    .ticketTag {
+        font-size: 10px;
+    }
+}
+
+@media (max-width: 480px) {
+    .ticketCard {
+        width: 100%;
+        padding: 10px;
+    }
+
+    .ticketTitle {
+        font-size: 0.9rem;
+    }
+
+    .ticketId {
+        font-size: 11px;
+    }
+
+    .priorityIcon {
+        font-size: 16px;
+    }
+
+    .ticketTag {
+        font-size: 9px;
+        padding: 4px 8px;
+    }
 }

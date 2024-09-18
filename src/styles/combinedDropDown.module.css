@@ -58,3 +58,27 @@ button img {
     width: 12px;
     height: 12px;
 }
+
+.dropdownMenu {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.groupingOptions, .sortingOptions {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+
+.groupingOptions label, .sortingOptions label {
+    flex-grow: 1;
+    text-align: left;
+}
+
+.groupingOptions select, .sortingOptions select {
+    flex-grow: 1;
+    text-align: center;
+    max-width: 150px;
+}
