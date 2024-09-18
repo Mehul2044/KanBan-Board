@@ -7,7 +7,17 @@
 .kanbanColumn {
     padding: 10px;
     margin: 0 8px;
+    position: relative;
 }
+
+.noItemsMessage {
+    color: #666;
+    text-align: center;
+    padding: 20px;
+    font-style: italic;
+    font-size: 1rem;
+}
+
 
 .heading {
     text-align: center;
@@ -31,4 +41,15 @@
     cursor: pointer;
     padding: 0 5px;
 }
+
+.userIconContainer {
+    display: flex;
+    align-items: center;
+}
+
+.userName {
+    font-size: 1rem;
+    font-weight: 500;
+}
+
 

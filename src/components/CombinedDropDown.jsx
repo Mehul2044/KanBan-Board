@@ -13,11 +13,13 @@ const CombinedDropdown = ({groupBy, setGroupBy, sortBy, setSortBy}) => {
     const handleGroupByChange = (e) => {
         setSelectedGrouping(e.target.value);
         setGroupBy(e.target.value);
+        setIsOpen(false);
     };
 
     const handleSortByChange = (e) => {
         setSelectedSorting(e.target.value);
         setSortBy(e.target.value);
+        setIsOpen(false);
     };
 
     const handleClickOutside = (event) => {

@@ -23,13 +23,6 @@
     color: #888;
 }
 
-.userAvatar {
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    object-fit: cover;
-}
-
 .ticketTitle {
     font-size: 18px;
     font-weight: 600;
@@ -51,17 +44,6 @@
 .ticketInfo {
     display: flex;
     align-items: center;
-}
-
-.availabilityDot {
-    position: absolute;
-    bottom: -2px;
-    right: -2px;
-    width: 10px;
-    height: 10px;
-    border-radius: 50%;
-    border: 2px solid white;
-    borderRadius: 50%;
 }
 
 .priorityIcon {

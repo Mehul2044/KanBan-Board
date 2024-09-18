@@ -6,11 +6,13 @@ import mediumPriority from "../assets/Img - Medium Priority.svg";
 import lowPriority from "../assets/Img - Low Priority.svg";
 import urgentPriority from "../assets/SVG - Urgent Priority grey.svg";
 import noPriority from "../assets/No-priority.svg";
+import cancelled from "../assets/Cancelled.svg";
 
 import todoIcon from "../assets/To-do.svg";
 import inProgressIcon from "../assets/in-progress.svg";
 import doneIcon from "../assets/Done.svg";
 import backLogIcon from "../assets/Backlog.svg";
+import UserAvatar from "./UserAvatar.jsx";
 
 const TicketCard = ({ticket, users, groupBy}) => {
     const user = users.find((user) => user.id === ticket.userId);
@@ -28,36 +30,14 @@ const TicketCard = ({ticket, users, groupBy}) => {
         "in progress": <img src={inProgressIcon} alt="In Progress"/>,
         done: <img src={doneIcon} alt="Done"/>,
         backlog: <img src={backLogIcon} alt="Backlog"/>,
+        cancelled: <img src={cancelled} alt="Cancelled"/>,
     };
-
-    const availabilityDotColor = user.available ? 'yellow' : 'grey';
 
     return (
         <div className={styles.ticketCard}>
             <div className={styles.ticketHeader}>
                 <p className={styles.ticketId}>{ticket.id}</p>
-                {groupBy !== "user" && <div title={user.name} className={styles.userAvatar} style={{
-                    backgroundColor: `hsl(${Math.floor(Math.random() * 360)}, 50%, 50%)`,
-                    display: 'flex',
-                    justifyContent: 'center',
-                    alignItems: 'center',
-                    position: 'relative',
-                }}>
-                    {user.name.slice(0, 2).toUpperCase()}
-                    <span
-                        className={styles.availabilityDot}
-                        style={{
-                            backgroundColor: availabilityDotColor,
-                            width: '10px',
-                            height: '10px',
-                            borderRadius: '50%',
-                            position: 'absolute',
-                            bottom: '-2px',
-                            right: '-2px',
-                            border: '2px solid white'
-                        }}
-                    />
-                </div>}
+                {groupBy !== "user" && <UserAvatar user={user}/>}
             </div>
 
             <h3 className={styles.ticketTitle}>
