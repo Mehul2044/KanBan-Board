@@ -12,22 +12,22 @@ import inProgressIcon from "../assets/in-progress.svg";
 import doneIcon from "../assets/Done.svg";
 import backLogIcon from "../assets/Backlog.svg";
 
-const TicketCard = ({ ticket, users }) => {
+const TicketCard = ({ticket, users, groupBy}) => {
     const user = users.find((user) => user.id === ticket.userId);
 
     const priorityIcons = {
-        4: <img src={urgentPriority} alt="Urgent" />,
-        3: <img src={highPriority} alt="High" />,
-        2: <img src={mediumPriority} alt="Medium" />,
-        1: <img src={lowPriority} alt="Low" />,
-        0: <img src={noPriority} alt="No priority" />,
+        4: <img src={urgentPriority} alt="Urgent"/>,
+        3: <img src={highPriority} alt="High"/>,
+        2: <img src={mediumPriority} alt="Medium"/>,
+        1: <img src={lowPriority} alt="Low"/>,
+        0: <img src={noPriority} alt="No priority"/>,
     };
 
     const statusIcons = {
-        todo: <img src={todoIcon} alt="Todo" />,
-        "in progress": <img src={inProgressIcon} alt="In Progress" />,
-        done: <img src={doneIcon} alt="Done" />,
-        backlog: <img src={backLogIcon} alt="Backlog" />,
+        todo: <img src={todoIcon} alt="Todo"/>,
+        "in progress": <img src={inProgressIcon} alt="In Progress"/>,
+        done: <img src={doneIcon} alt="Done"/>,
+        backlog: <img src={backLogIcon} alt="Backlog"/>,
     };
 
     const availabilityDotColor = user.available ? 'yellow' : 'grey';
@@ -36,7 +36,7 @@ const TicketCard = ({ ticket, users }) => {
         <div className={styles.ticketCard}>
             <div className={styles.ticketHeader}>
                 <p className={styles.ticketId}>{ticket.id}</p>
-                <div className={styles.userAvatar} style={{
+                {groupBy !== "user" && <div title={user.name} className={styles.userAvatar} style={{
                     backgroundColor: `hsl(${Math.floor(Math.random() * 360)}, 50%, 50%)`,
                     display: 'flex',
                     justifyContent: 'center',
@@ -57,20 +57,20 @@ const TicketCard = ({ ticket, users }) => {
                             border: '2px solid white'
                         }}
                     />
-                </div>
+                </div>}
             </div>
 
             <h3 className={styles.ticketTitle}>
-                <span className={styles.statusIcon}>
+                {groupBy !== "status" && <span className={styles.statusIcon}>
                     {statusIcons[ticket.status.toLowerCase()]}
-                </span>
+                </span>}
                 {ticket.title}
             </h3>
 
             <div className={styles.ticketInfo}>
-                <span className={styles.priorityIcon}>
+                {groupBy !== "priority" && <span className={styles.priorityIcon}>
                     {priorityIcons[ticket.priority]}
-                </span>
+                </span>}
                 <span className={styles.ticketTag}>{ticket.tag[0]}</span>
             </div>
         </div>
@@ -80,6 +80,7 @@ const TicketCard = ({ ticket, users }) => {
 TicketCard.propTypes = {
     ticket: PropTypes.object.isRequired,
     users: PropTypes.array.isRequired,
+    groupBy: PropTypes.string.isRequired,
 };
 
 export default TicketCard;

@@ -19,9 +19,10 @@ const App = () => {
 
     return (
         <div>
-            <h1>Kanban Board</h1>
-            <GroupingSelector setGroupBy={setGroupBy} />
-            <SortSelector setSortBy={setSortBy} />
+            <div style={{ backgroundColor: 'white', padding: '10px' }}>
+                <GroupingSelector setGroupBy={setGroupBy} />
+                <SortSelector setSortBy={setSortBy} />
+            </div>
             <KanbanBoard tickets={tickets} users={users} groupBy={groupBy} sortBy={sortBy} />
         </div>
     );

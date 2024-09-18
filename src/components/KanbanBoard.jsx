@@ -1,9 +1,12 @@
 import TicketCard from './TicketCard';
-import { groupTickets, sortTickets } from '../utils/groupTickets';
+import {groupTickets, sortTickets} from '../utils/groupTickets';
 import styles from "../styles/kanbanBoard.module.css";
 import PropTypes from "prop-types";
 
-const KanbanBoard = ({ tickets, users, groupBy, sortBy }) => {
+import addIcon from "../assets/add.svg";
+import moreOptionsIcon from "../assets/3 dot menu.svg";
+
+const KanbanBoard = ({tickets, users, groupBy, sortBy}) => {
     const groupedTickets = groupTickets(tickets, groupBy, users);
     const sortedTickets = sortTickets(groupedTickets, sortBy);
 
@@ -11,9 +14,18 @@ const KanbanBoard = ({ tickets, users, groupBy, sortBy }) => {
         <div className={styles.kanbanBoard}>
             {Object.keys(sortedTickets).map(group => (
                 <div className={styles.kanbanColumn} key={group}>
-                    <h2 className={styles.heading}>{group}</h2>
+                    <div className={styles.kanbanHeadingContainer}>
+                        <h2 className={styles.heading}>{group} <span
+                            style={{fontSize: "1rem", fontWeight: "normal"}}>{sortedTickets[group].length}</span></h2>
+                        <div className={styles.groupIcons}>
+                            <span className={styles.addIcon}><img src={addIcon} alt="Add"/></span>
+                            <span className={styles.moreOptionsIcon}><img src={moreOptionsIcon}
+                                                                          alt="More Options"/></span>
+                        </div>
+                    </div>
+
                     {sortedTickets[group].map(ticket => (
-                        <TicketCard key={ticket.id} ticket={ticket} users={users} />
+                        <TicketCard key={ticket.id} ticket={ticket} users={users} groupBy={groupBy}/>
                     ))}
                 </div>
             ))}

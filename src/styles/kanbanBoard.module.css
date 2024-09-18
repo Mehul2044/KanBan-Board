@@ -13,3 +13,22 @@
     text-align: center;
     font-size: 18px;
 }
+
+.kanbanHeadingContainer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.groupIcons {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+.addIcon, .moreOptionsIcon {
+    font-size: 20px;
+    cursor: pointer;
+    padding: 0 5px;
+}
+
