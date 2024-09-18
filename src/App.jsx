@@ -1,8 +1,7 @@
 import { useState, useEffect } from 'react';
 import KanbanBoard from './components/KanbanBoard';
-import GroupingSelector from './components/GroupingSelector';
-import SortSelector from './components/SortSelector';
 import { fetchTicketsAndUsers } from './utils/api';
+import CombinedDropdown from "./components/CombinedDropDown.jsx";
 
 const App = () => {
     const [tickets, setTickets] = useState([]);
@@ -20,8 +19,7 @@ const App = () => {
     return (
         <div>
             <div style={{ backgroundColor: 'white', padding: '10px' }}>
-                <GroupingSelector setGroupBy={setGroupBy} />
-                <SortSelector setSortBy={setSortBy} />
+                <CombinedDropdown groupBy={groupBy} setGroupBy={setGroupBy} sortBy={sortBy} setSortBy={setSortBy} />
             </div>
             <KanbanBoard tickets={tickets} users={users} groupBy={groupBy} sortBy={sortBy} />
         </div>
