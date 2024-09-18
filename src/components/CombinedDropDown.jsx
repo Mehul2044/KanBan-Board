@@ -1,9 +1,10 @@
-import { useState, useRef, useEffect } from 'react';
+import {useState, useRef, useEffect} from 'react';
 import styles from "../styles/combinedDropDown.module.css";
 import PropTypes from "prop-types";
 import downArrow from "../assets/down.svg";
+import sliderHorizontal from "../assets/sliders-horizontal.svg";
 
-const CombinedDropdown = ({ groupBy, setGroupBy, sortBy, setSortBy }) => {
+const CombinedDropdown = ({groupBy, setGroupBy, sortBy, setSortBy}) => {
     const [isOpen, setIsOpen] = useState(false);
     const [selectedGrouping, setSelectedGrouping] = useState(groupBy);
     const [selectedSorting, setSelectedSorting] = useState(sortBy);
@@ -35,13 +36,15 @@ const CombinedDropdown = ({ groupBy, setGroupBy, sortBy, setSortBy }) => {
     return (
         <div className={styles.combinedDropdown} ref={dropdownRef}>
             <button onClick={() => setIsOpen(!isOpen)}>
-                Display <img src={downArrow} alt="down" />
+                <img src={sliderHorizontal} alt={"slider"}/> <span style={{marginLeft: "1rem"}}>Display</span> <img
+                src={downArrow} alt="down"/>
             </button>
             {isOpen && (
                 <div className={styles.dropdownMenu}>
                     <div className={styles.groupingOptions}>
                         <label>Grouping</label>
-                        <select style={{ backgroundColor: 'white' }} value={selectedGrouping} onChange={handleGroupByChange}>
+                        <select style={{backgroundColor: 'white'}} value={selectedGrouping}
+                                onChange={handleGroupByChange}>
                             <option value="status">Status</option>
                             <option value="user">User</option>
                             <option value="priority">Priority</option>
@@ -49,7 +52,8 @@ const CombinedDropdown = ({ groupBy, setGroupBy, sortBy, setSortBy }) => {
                     </div>
                     <div className={styles.sortingOptions}>
                         <label>Ordering</label>
-                        <select style={{ backgroundColor: 'white' }} value={selectedSorting} onChange={handleSortByChange}>
+                        <select style={{backgroundColor: 'white'}} value={selectedSorting}
+                                onChange={handleSortByChange}>
                             <option value="priority">Priority</option>
                             <option value="title">Title</option>
                         </select>
