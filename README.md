@@ -1,8 +1,29 @@
-# React + Vite
+# Kanban Board
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A React-based Kanban board application built with Vite.
 
-Currently, two official plugins are available:
+## Overview
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+This project provides a minimal setup for a Kanban board application using React and Vite. It includes features such as:
+
+* A Kanban board component for displaying tickets
+* A combined dropdown component for filtering and sorting tickets
+* API calls for fetching tickets and users
+* Local storage for saving group by and sort by preferences
+
+## Getting Started
+
+### Prerequisites
+
+* Node.js (>= 14.17.0)
+* npm (>= 6.14.13) or yarn (>= 1.22.10)
+
+### Installation
+
+1. Clone the repository
+2. Install dependencies using `npm install`.
+3. Start the development server using `npm run dev`.
+
+### Running the Application
+
+1. Open your browser to http://localhost:5173 to view the application.
